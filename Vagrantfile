@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-VBOX = "ubuntu/precise64"
+VBOX = "kylekoza/trusty"
 
 VAGRANTFILE_API_VERSION = "2"
 
@@ -13,6 +13,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.gui = true # set headless here
     vb.memory = "3096" # set memory here
     vb.cpus = "2" # set cores here
+  end
+
+  config.vm.provider "vmware_fusion" do |vb|
+    vb.gui = true
+    vb.vmx["memsize"]  = "3096"
+    vb.vmx["numvcpus"] = "2"
   end
 
   config.vm.provision "shell" do |s|
